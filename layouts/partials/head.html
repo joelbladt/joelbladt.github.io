@@ -1,6 +1,7 @@
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   
   {{ hugo.Generator }}
 
@@ -27,7 +28,7 @@
 
   <meta name="theme-color" content="{{ .Site.Params.faviconThemeColor }}">
 
-  {{ $bootstrapCss := "css/bootstrap.min.css" }}
+  {{ $bootstrapCss := "https://blogzine.webestica.com/assets/css/style.css" }}
   <link rel="stylesheet" href="{{ $bootstrapCss | absURL }}" />
 
   {{ if .IsHome }}

@@ -34,19 +34,19 @@ publishDir = "docs"
 
 [menu]
   [[menu.nav]]
-  name = "Posts"
+  name = "Joel Bladt"
   url = "/"
   weight = 1
   [[menu.nav]]
-  name = "Tags"
-  url = "/tags/"
+  name = "Blog"
+  url = "/posts/"
   weight = 2
   [[menu.nav]]
-  name = "About"
-  url = "/about/"
+  name = "Über ich"
+  url = "/ueber-mich/"
   weight = 3
   [[menu.nav]]
-  name = "RSS"
+  name = ""
   url = "/index.xml"
   weight = 4
 
@@ -72,8 +72,8 @@ publishDir = "docs"
     codeFences = true
     hl_Lines = ""
     lineNoStart = 1
-    lineNos = false
-    lineNumbersInTable = true
+    lineNos = true
+    lineNumbersInTable = false
     noClasses = true
     style = "monokai"
     tabWidth = 4

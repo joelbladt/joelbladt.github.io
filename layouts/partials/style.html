@@ -108,6 +108,7 @@ a:focus {
 }
 {{ end }}
 
+/*
 {{ with .Site.Params.wrapperMaxWidth }}
 .container {
   max-width: {{ . | safeCSS }};
@@ -117,6 +118,7 @@ a:focus {
   max-width: 800px;
 }
 {{ end }}
+*/
 
 {{ if eq .Site.Params.customCodeStyle true }}
 pre {
@@ -158,4 +160,5 @@ blockquote,
   border-left: 5px solid #6c757d;
 }
 {{ end }}
+
 </style>
