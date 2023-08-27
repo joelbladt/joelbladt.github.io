@@ -60,7 +60,7 @@ git branch --no-merged | egrep -v "(^\*|main|gh-pages)" | xargs git branch -D
 git branch | egrep -v "(^\*|main|gh-pages)" | xargs git branch -D
 ```
 
-Ich bedanke mich für dein Interesse beim Lesen dieses Artikels. Bei Fragen oder Anregungen stehe ich gerne zur Verfügung. <!-- Hinterlassen Sie gerne einen Kommentar – ich freue mich auf Ihre Rückmeldungen! -->
+Ich bedanke mich für dein Interesse beim Lesen dieses Artikels. Bei Fragen oder Anregungen stehe ich gerne zur Verfügung. Hinterlassen Sie gerne einen Kommentar – ich freue mich auf Ihre Rückmeldungen!
 
 #### Weiterführende Quellen
 
