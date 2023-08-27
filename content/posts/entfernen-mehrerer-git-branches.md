@@ -49,7 +49,8 @@ Diese Methode ermöglicht es, den Prozess zu beschleunigen und gleichzeitig den 
 
 Wenn du deinen Arbeitsbereich gründlich aufräumen und nicht zusammengeführte Branches löschen möchtest, ändere --merged in --no-merged und ändere das kleine -d in ein großes -D.
 
-### Löschen nicht zusammengeführter Branches
+**Löschen nicht zusammengeführter Branches**
+
 ```sh
 # GEFAHR! Führe diesen Vorgang nur aus, wenn du sicher bist, dass du nicht gemergte Branches löschen willst.
 
@@ -62,8 +63,7 @@ git branch | egrep -v "(^\*|main|gh-pages)" | xargs git branch -D
 
 Ich bedanke mich für dein Interesse beim Lesen dieses Artikels. Bei Fragen oder Anregungen stehe ich gerne zur Verfügung. Hinterlassen Sie gerne einen Kommentar – ich freue mich auf Ihre Rückmeldungen!
 
-#### Weiterführende Quellen
-
+###### Weiterführende Quellen
 https://www.atlassian.com/git/tutorials/git-prune<br />
 https://nickymeuleman.netlify.app/blog/delete-git-branches<br />
 https://stackoverflow.com/questions/226976/how-can-i-know-if-a-branch-has-been-already-merged-into-master<br />
