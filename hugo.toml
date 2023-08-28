@@ -36,21 +36,13 @@ staticDir = ['static']
 
 [menu]
   [[menu.nav]]
-  name = "Joel Bladt"
-  url = "/"
+  name = "Über mich"
+  url = "/uber-mich/"
   weight = 1
   [[menu.nav]]
   name = "Blog"
-  url = "/posts/"
+  url = "/blog/"
   weight = 2
-  [[menu.nav]]
-  name = "Über ich"
-  url = "/ueber-mich/"
-  weight = 3
-  [[menu.nav]]
-  name = ""
-  url = "/index.xml"
-  weight = 4
 
 [markup]
   defaultMarkdownHandler = "goldmark"
