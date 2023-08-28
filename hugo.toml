@@ -4,6 +4,7 @@ title = "Simple github page"
 theme = "minimal-bootstrap-hugo-theme"
 publishDir = "docs"
 disqusShortname = "joelbladt"
+staticDir = ['static']
 
 [taxonomies]
   tag = "tags"
