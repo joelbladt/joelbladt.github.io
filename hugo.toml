@@ -1,6 +1,6 @@
 baseURL = "https://joelbladt.github.io"
 languageCode = "de-de"
-title = "Simple github page"
+title = "Joel Bladt"
 theme = "minimal-bootstrap-hugo-theme"
 publishDir = "docs"
 disqusShortname = "joelbladt"
@@ -43,6 +43,14 @@ staticDir = ['static']
   name = "Blog"
   url = "/blog/"
   weight = 2
+  [[menu.nav]]
+  name = "Github"
+  url = "https://github.com/joelbladt"
+  weight = 3
+  [[menu.nav]]
+  name = "Twitter"
+  url = "https://twitter.com/joelbladt"
+  weight = 4
 
 [markup]
   defaultMarkdownHandler = "goldmark"
