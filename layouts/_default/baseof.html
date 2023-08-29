@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de" data-bs-theme="light">
+
+{{ partial "head.html" . }}
+
+<body>
+  {{ partial "nav.html" . }}
+  
+  <main class="pt-4 pb-0">
+    <div class="container">
+    {{ block "main" . }}{{ end }}
+    </div>
+  </main>
+
+  {{ partial "bootstrap-js.html" . }}
+  {{ partial "google-analytics-async.html" . }}
+  {{ partial "mastodon-js.html" . }}
+  {{ partial "cookie-consent.html" . }}
+</body>
+
+</html>

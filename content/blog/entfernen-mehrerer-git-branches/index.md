@@ -3,7 +3,7 @@ title: "Sauberes Arbeiten: Lokales Entfernen mehrerer Git-Branches"
 titleImage: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2952&q=80"
 date: 2023-08-22T14:17:21+02:00
 draft: false
-toc: true
+toc: false
 images:
 tags:
   - Git
