@@ -1,13 +1,13 @@
 ---
-title: "Sauberes Arbeiten: Lokales Entfernen mehrerer Git-Branches"
-titleImage: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2952&q=80"
+title: "Schnelles Löschen mehrerer Git-Branches"
+titleImage: "./github-octocat.jpg"
 date: 2023-08-22T14:17:21+02:00
 draft: false
 toc: false
 images:
 tags:
   - Git
-author: "Joel"
+author: "Joel Bladt"
 ---
 
 Als leidenschaftlicher Entwickler habe ich stets nach Wegen gesucht, meinen Arbeitsablauf zu optimieren. Eines der größten Hindernisse, denen ich dabei begegnet bin, war die wachsende Anzahl von Git-Branches. Jeder neue Feature-Branch, jeder Bugfix-Branch und jede Experimentierphase hinterlassen ihre Spuren im Repository. Das führte oft zu Unordnung, Verwirrung und einem insgesamt unproduktiven Arbeitsumfeld.
