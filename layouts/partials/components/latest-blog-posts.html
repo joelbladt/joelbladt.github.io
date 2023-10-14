@@ -13,7 +13,7 @@
 
         <div class="{{ if (eq $pages.Len 1) }}col-lg-12{{ else }}col-lg-6{{ end }}">
           <div class="card card-overlay-bottom card-grid-lg card-bg-scale"
-               style="background-image:url('{{ .Params.titleImage }}'); background-position: center left; background-size: cover;">
+               style="background-image:url('{{ .Permalink }}/{{ .Params.titleImage }}'); background-position: center left; background-size: cover;">
             <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
               <div class="w-100 mt-auto">
                 <h2 class="text-white h1">
