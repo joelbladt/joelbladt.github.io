@@ -11,11 +11,14 @@
         {{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
         {{ $minutes := math.Round (div $readTime 60) }}
 
-        {{ $image := .Resources.Get .Params.titleImage }}
+        {{ $link := .Permalink }}
+        {{ $cover := .Params.titleImage }}
+        {{ $backgroundImage := print $link $cover }}
 
         <div class="{{ if (eq $pages.Len 1) }}col-lg-12{{ else }}col-lg-6{{ end }}">
           <div class="card card-overlay-bottom card-grid-lg card-bg-scale"
-               style="background-image:url('{{ $image }}'); background-position: center left; background-size: cover;">
+               style="background-image:url('{{ if in .Params.titleImage "http" }}{{ $cover }}{{ else }}{{ $backgroundImage }}{{ end }}');
+               background-position: center left; background-size: cover;">
             <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
               <div class="w-100 mt-auto">
                 <h2 class="text-white h1">
@@ -27,7 +30,7 @@
                     <div class="nav-link">
                       <div class="d-flex align-items-center text-white position-relative">
                         <div class="avatar avatar-sm">
-                          <img class="avatar-img rounded-circle" src="https://avatars.githubusercontent.com/u/34725327">
+                          <img class="avatar-img rounded-circle" src="//avatars.githubusercontent.com/u/34725327">
                         </div>
                         <span class="ms-3">von <a href="#" class="stretched-link text-reset btn-link">{{ .Params.author }}</a></span>
                       </div>
@@ -50,8 +53,13 @@
         {{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
         {{ $minutes := math.Round (div $readTime 60) }}
 
+        {{ $link := .Permalink }}
+        {{ $cover := .Params.titleImage }}
+        {{ $backgroundImage := print $link $cover }}
+
         <div class="card card-overlay-bottom card-grid-lg card-bg-scale"
-             style="background-image:url('{{ .Params.titleImage }}'); background-position: center left; background-size: cover;">
+             style="background-image:url('{{ if in .Params.titleImage "http" }}{{ $cover }}{{ else }}{{ $backgroundImage }}{{ end }}');
+             background-position: center left; background-size: cover;">
           <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
             <div class="w-100 mt-auto">
               <h2 class="text-white h1">
@@ -63,7 +71,7 @@
                   <div class="nav-link">
                     <div class="d-flex align-items-center text-white position-relative">
                       <div class="avatar avatar-sm">
-                        <img class="avatar-img rounded-circle" src="https://avatars.githubusercontent.com/u/34725327">
+                        <img class="avatar-img rounded-circle" src="//avatars.githubusercontent.com/u/34725327">
                       </div>
                       <span class="ms-3">von <a href="#" class="stretched-link text-reset btn-link">{{ .Params.author }}</a></span>
                     </div>
@@ -87,9 +95,14 @@
           {{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
           {{ $minutes := math.Round (div $readTime 60) }}
 
+          {{ $link := .Permalink }}
+          {{ $cover := .Params.titleImage }}
+          {{ $backgroundImage := print $link $cover }}
+
           <div class="col-lg-12">
             <div class="card card-overlay-bottom card-grid-sm card-bg-scale"
-               style="background-image:url('{{ .Params.titleImage }}'); background-position: center left; background-size: cover;">
+               style="background-image:url('{{ if in .Params.titleImage "http" }}{{ $cover }}{{ else }}{{ $backgroundImage }}{{ end }}');
+               background-position: center left; background-size: cover;">
             <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
               <div class="w-100 mt-auto">
                 <h4 class="text-white">
@@ -115,8 +128,14 @@
           {{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
           {{ $minutes := math.Round (div $readTime 60) }}
 
+          {{ $link := .Permalink }}
+          {{ $cover := .Params.titleImage }}
+          {{ $backgroundImage := print $link $cover }}
+
           <div class="col-lg-12">
-            <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image:url('{{ .Params.titleImage }}'); background-position: center left; background-size: cover;">
+            <div class="card card-overlay-bottom card-grid-sm card-bg-scale"
+                 style="background-image:url('{{ if in .Params.titleImage "http" }}{{ $cover }}{{ else }}{{ $backgroundImage }}{{ end }}');
+                 background-position: center left; background-size: cover;">
               <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4"> 
                 <div class="w-100 mt-auto">
                   <h4 class="text-white">
@@ -137,8 +156,14 @@
           {{ $customDateFormat := "January 2, 2006" }}
           {{ with .Site.Params.customDateFormat }}{{ $customDateFormat = . }}{{ end }}
 
+          {{ $link := .Permalink }}
+          {{ $cover := .Params.titleImage }}
+          {{ $backgroundImage := print $link $cover }}
+
           <div class="col-md-6">
-            <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image:url('{{ .Params.titleImage }}'); background-position: center left; background-size: cover;">
+            <div class="card card-overlay-bottom card-grid-sm card-bg-scale"
+                 style="background-image:url('{{ if in .Params.titleImage "http" }}{{ $cover }}{{ else }}{{ $backgroundImage }}{{ end }}');
+                 background-position: center left; background-size: cover;">
               <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4"> 
                 <div class="w-100 mt-auto">
                   <h4 class="text-white">
@@ -171,6 +196,10 @@
       {{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
       {{ $minutes := math.Round (div $readTime 60) }}
 
+      {{ $link := .Permalink }}
+      {{ $cover := .Params.titleImage }}
+      {{ $backgroundImage := print $link $cover }}
+
       {{ $gridClass := "col-md-4" }}
 
       {{ if (eq $pages.Len 5) }}
@@ -180,7 +209,9 @@
       {{ end }}
 
       <div class="{{ $gridClass }}">
-        <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image:url('{{ .Params.titleImage }}'); background-position: center left; background-size: cover;">
+        <div class="card card-overlay-bottom card-grid-sm card-bg-scale"
+             style="background-image:url('{{ if in .Params.titleImage "http" }}{{ $cover }}{{ else }}{{ $backgroundImage }}{{ end }}');
+             background-position: center left; background-size: cover;">
           <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4"> 
             <div class="w-100 mt-auto">
               <h4 class="text-white">
