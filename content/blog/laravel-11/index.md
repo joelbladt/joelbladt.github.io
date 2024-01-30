@@ -1,6 +1,6 @@
 ---
-title: "Ein Blick darauf, was in Laravel 11 kommt"
-titleImage: "laravel-11.jpg"
+title: "Ein Blick in die Zukunft: Neue Features in Laravel 11"
+titleImage: "laravel.jpg"
 date: 2024-01-30T01:14:13+02:00
 draft: false
 toc: false
@@ -10,16 +10,17 @@ tags:
 author: "Joel Bladt"
 ---
 
-Laravel 11 soll nicht vor dem ersten Quartal 2024 veröffentlicht werden, aber einige neue Funktionen wurden bereits bekannt gegeben, und Taylor geht in seiner Laracon-Keynote auf einige große neue Verbesserungen ein.
+Obwohl Laravel 11 voraussichtlich erst im ersten Quartal 2024 veröffentlicht wird, möchte ich euch schon mal einen
+Vorgeschmack auf einige coole Funktionen geben. Taylor Otwell hat in seiner Laracon-Keynote bereits einige aufregende
+Verbesserungen enthüllt, die uns erwarten.
 
-## Schlanke Verzeichnisstruktur
+## Überarbeitete Verzeichnisstruktur
 
-Bislang handelt es sich nur um eine Beta-Vorschau. Sie kann sich noch ändern, aber im Moment ist folgendes zu erwarten...
+Schaut mal, in der aktuellen Beta-Vorschau von Laravel 11 gibt es spannende Änderungen in der Verzeichnisstruktur:
 
-Controller erweitern nicht mehr standardmäßig irgendetwas.
-
-Kein Middleware-Verzeichnis mehr. Derzeit enthält Laravel neun Middleware und viele würden Sie nie anpassen. Wenn Sie sie jedoch anpassen möchten, wird dies in den App/ServiceProvider verschoben. Zum Beispiel:
-
+- Controller erweitern standardmäßig nichts mehr.
+- Das Middleware-Verzeichnis ist Geschichte. Die vorhandenen Middleware könnt ihr jetzt im `App/ServiceProvider` 
+nach Belieben anpassen.
 ```php
 public function boot(): void
 {
@@ -27,9 +28,8 @@ public function boot(): void
 }
 ```
 
-## Kein Http/Kernel mehr
-
-Die meisten Dinge, die Sie früher im Kernel erledigen konnten, können Sie jetzt im Bootstrap/App erledigen.
+- Das Http/Kernel wurde gestrichen, und viele Aufgaben, die zuvor im Kernel erledigt wurden, können nun im `Bootstrap/App`
+erledigt werden.
 
 ```php
 return Application::configure()
@@ -42,9 +42,10 @@ return Application::configure()
         $middleware->web(append: LaraconMiddleware::class):
     })
 ```
-## Effizientes Löschen mehrerer lokaler Branches
+## Model casts ändern sich
 
-Die Model Casts sind jetzt als Methode und nicht mehr als Property definiert. Wenn sie als Methode definiert sind, können wir andere Dinge tun, wie z.B. andere Methoden direkt von den Casts aufrufen. Hier ist ein Beispiel mit einer neuen Laravel 11 `AsEnumCollection`:
+Die Model Casts wurden nun als Methode definiert, was es ermöglicht, direkt auf andere Methoden von den Casts zuzugreifen.
+Ein Beispiel hierzu in Laravel 11:
 
 ```php
 protected function casts(): array
@@ -57,9 +58,10 @@ protected function casts(): array
 }
 ```
 
-## Dump
+## Vereinheitlichung von Dump-Funktionen
 
-Dies zielt darauf ab, den Kern des Frameworks zu rationalisieren, da mehrere Klassen derzeit "dd" oder "dump" Methoden haben. Außerdem können Sie diese Dumpable-Eigenschaft in Ihren eigenen Klassen verwenden:
+Um den Kern des Frameworks zu optimieren, wurden die "dd" oder "dump" Methoden in mehreren Klassen vereinheitlicht.
+Zudem könnt ihr die Dumpable-Eigenschaft in euren eigenen Klassen verwenden:
 
 ```php
 class Stringable implements JsonSerializable, ArrayAccess
@@ -70,58 +72,76 @@ class Stringable implements JsonSerializable, ArrayAccess
     str('foo')->dump();
 ```
 
-## Änderungen in der Konfiguration
+## Konfigurationsänderungen
 
-Laravel hat eine Menge von Konfigurationsdateien, und Laravel 11 entfernt diese, und alle Konfigurationsoptionen zu verringern. Die .env wurde erweitert, um alle Optionen, die Sie einstellen möchten, zu enthalten.
-
-Parallel dazu gibt es einen neuen Artisan-Befehl `config:publish`, mit dem Sie jede beliebige Konfiguration wiederherstellen können. Die neue Kaskadierung ermöglicht es Ihnen, alle Optionen, die Sie nicht anpassen möchten, zu entfernen, auch wenn Sie sie zurückbringen.
+Laravel 11 reduziert die Anzahl der Konfigurationsdateien und integriert alle Optionen in die erweiterte `.env`.
+Der neue Befehl `php artisan config:publish` ermöglicht es, Konfigurationen nach Bedarf wiederherzustellen und
+nicht benötigte Optionen zu entfernen.
 
 ## Schlankere Standard-Migrationen
 
-Wenn Sie eine neue Laravel-Anwendung starten, wird sie mit einigen Standardmigrationen aus den Jahren 2014 und 2019 ausgeliefert. Bei diesen werden nun die Daten entfernt und in nur zwei Dateien verschoben.
+Neue Laravel-Anwendungen enthalten jetzt nur noch zwei Dateien für Standardmigrationen, die die Daten der Jahre 2014 und 2019 zusammenführen.
 
-## Änderungen der Routes
+## Änderungen in den Routen
 
-Standardmäßig wird es nur zwei Routendateien geben, console.php und web.php. API-Routen werden nun über `php artisan install:api` aktiviert, wodurch Sie die API-Routen-Datei und Laravel Sanctum erhalten.
-
-Dasselbe gilt für die Websocket-Übertragung, `php artisan install:broadcasting`
+Standardmäßig wird es nur noch zwei Routendateien geben: `console.php` und `web.php`. API-Routen werden über
+`php artisan install:api` aktiviert, während für WebSocket-Übertragungen `php artisan install:broadcasting` genutzt wird.
 
 ## Console Kernel entfernt
 
-Der Konsolenkern wird entfernt und Sie können stattdessen Ihre Konsolenbefehle direkt in `routes/console.php` definieren.
+Der Console Kernel entfällt und Konsolenbefehle könnt ihr nun direkt in `routes/console.php` definieren.
 
 ## Named arguments
-Named arguments fallen nicht unter die Abwärtskompatibilitätsrichtlinien von Laravel. Bei Bedarf können wir Funktionsargumente umbenennen, um die Laravel-Codebasis zu verbessern. Die Verwendung von benannten Argumenten beim Aufruf von Laravel-Methoden sollte daher mit Bedacht und in dem Bewusstsein erfolgen, dass sich die Parameternamen in Zukunft ändern können.
+Named arguments sind nicht mehr an die Abwärtskompatibilitätsrichtlinien von Laravel gebunden, was eine verbesserte
+Flexibilität bei der Nutzung von Funktionsargumenten ermöglicht.
 
-## Eager Load Limit
+## Eager Load Limit wird integriert
 
-Laravel 11 integriert den Code hinter dem Paket "eager load limit":
+"Eager Load Limit" ist eine Funktion in Laravel 11, die sich auf die effiziente Abfrage von Beziehungen zwischen
+Datenbanktabellen konzentriert. In herkömmlichen Eager-Loading-Szenarien werden alle verknüpften Datensätze
+gleichzeitig geladen, was zu unnötigem Datenverkehr führt, insbesondere wenn nur eine begrenzte Anzahl von Datensätzen benötigt wird.
+
+Damit können wir vereinfacht die Anzahl der geladenen verknüpften Datensätze pro Beziehung begrenzen.
+Dies ermöglicht es, nur die relevanten Daten zu laden und verbessert somit die Leistung und Ressourcennutzung.
+Ein einfaches Beispiel könnte die Abfrage von Benutzern mit ihren letzten fünf Artikeln sein:
 
 ```php
 User::select('id', 'name')->with([
     'articles' => fn($query) => $query->limit(5)
 ])->get();
 ```
-Read more about Eager Load Limit here.
+In diesem Beispiel wird die Beziehung "articles" eager geladen, aber es werden nur die neuesten fünf Artikel für jeden
+Benutzer abgerufen. Diese Funktion ist besonders nützlich, um Overhead bei der Datenbankabfrage zu optimieren, indem
+nur die benötigten Daten geladen werden.
 
-## PHP 8.2 Mindestunterstützung
+## Voraussetzung: Mindestens PHP 8.2
 
-Dies war eine frühe Entscheidung, aber Laravel 11-Anwendungen erfordern mindestens PHP 8.2. Wenn Sie eine ältere Version von PHP verwenden, ist jetzt ein guter Zeitpunkt, diese zu aktualisieren.
+Für Laravel 11 stand die Entscheidung bereits früh fest, dass mindestens PHP 8.2 vorausgesetzt wird. Das ist eine gute
+Gelegenheit nicht nur die Laravel-Version, sondern auch die PHP-Version zu aktualisieren, wenn man die 
+[Unterstützten PHP Versionen]( https://www.php.net/supported-versions.php "Unterstützte Versionen") bedenkt.
+
+| Version                                                        | PHP Version | Veröffentlichung | Fehlerbehebungen bis  | Sicherheitsfixes bis |
+|----------------------------------------------------------------|-------------|------------------|-----------------------|----------------------|
+| [Laravel 9](https://laravel-news.com/laravel-9 "Laravel 9")    | 8.0 - 8.2   | 8. Februar 2025  | 8. August 2023        | 6. Februar 2024      |
+| [Laravel 10](https://laravel-news.com/laravel-10 "Laravel 10") | 8.1 - 8.2   | Q1 2023          | 6. August 2024        | 4. Februar 2025      |
+| [Laravel 11](https://laravel-news.com/laravel-11 "Laravel 11") | 8.2         | Q1 2024          | 5. August 2025        | 3. Februar 2026      |
 
 ## Laravel 11 installieren
 
-Laravel 11 ist noch nicht freigegeben, aber Sie können es bereits verwenden und testen, indem Sie Laravel new mit der Option --dev ausführen:
+Obwohl Laravel 11 noch nicht offiziell veröffentlicht ist, könnt ihr es bereits verwenden und testen, indem ihr
+ein neues Laravel Projekt mit dem Parameter **--dev** erstellt.
+
+**Hinweis: Ich rate davon ab, Laravel 11 nicht Produktiv einzusetzen, solange es nicht offiziell veröffentlicht ist,
+da sich bis zur offiziellen Veröffentlichung noch Änderungen ergeben können.**
 
 ```sh
-laravel new projectname --dev
+laravel new mein_laravel_elf_projekt --dev
 ```
-
-Beachten Sie, dass sich bis zur offiziellen Veröffentlichung von Laravel 11 noch einiges ändern wird.
-
-## Laravel Support Policy
-
-Für alle Laravel-Versionen werden 18 Monate lang Fehlerbehebungen und 2 Jahre lang Sicherheitsbehebungen bereitgestellt. Für alle zusätzlichen Bibliotheken, einschließlich Lumen, erhält nur die letzte Hauptversion Bugfixes.
 
 ## Fazit
 
-Bislang sind alle diese Funktionen als Beta-Version von Laravel 11 zu betrachten und sollen Ihren Arbeitsablauf verbessern. Die Dinge können und werden sich wahrscheinlich ändern, und ich werde diesen Beitrag aktualisieren, wenn neue Funktionen angekündigt werden.
+Abschließend bin ich gespannt darauf, wie die Laravel-Community auf die Veröffentlichung von Laravel 11 reagieren wird.
+Die bevorstehenden Änderungen sehe ich durchweg als positive Entwicklung in die richtige Richtung. Auch wenn es
+möglicherweise bedeutet, dass Anpassungen in unseren aktuellen Laravel-Projekten vorgenommen werden müssen, bin ich
+optimistisch, dass die neuen Funktionen und Optimierungen den Arbeitsablauf erheblich verbessern werden. Da sich Dinge
+möglicherweise ändern, werde ich diesen Beitrag aktualisieren, wenn weitere Features angekündigt werden. **Stay tuned!**
