@@ -1,7 +1,8 @@
 baseURL = "https://joelbladt.github.io"
 languageCode = "de-de"
 title = "Joel Bladt"
-theme = "minimal-bootstrap-hugo-theme"
+theme = "hugo-bootstrap-theme"
+themesdir = "node_modules/@filipecarneiro"
 publishDir = "docs"
 disqusShortname = "joelbladt"
 staticDir = ['static']
@@ -37,7 +38,7 @@ staticDir = ['static']
 [menu]
   [[menu.nav]]
   name = "Über mich"
-  url = "/uber-mich/"
+  url = "/about/"
   weight = 1
   [[menu.nav]]
   name = "Blog"

@@ -120,18 +120,49 @@ Für Laravel 11 stand die Entscheidung bereits früh fest, dass mindestens PHP 8
 Gelegenheit nicht nur die Laravel-Version, sondern auch die PHP-Version zu aktualisieren, wenn man die 
 [Unterstützten PHP Versionen]( https://www.php.net/supported-versions.php "Unterstützte Versionen") bedenkt.
 
-| Version                                                        | PHP Version | Veröffentlichung | Fehlerbehebungen bis  | Sicherheitsfixes bis |
-|----------------------------------------------------------------|-------------|------------------|-----------------------|----------------------|
-| [Laravel 9](https://laravel-news.com/laravel-9 "Laravel 9")    | 8.0 - 8.2   | 8. Februar 2025  | 8. August 2023        | 6. Februar 2024      |
-| [Laravel 10](https://laravel-news.com/laravel-10 "Laravel 10") | 8.1 - 8.2   | Q1 2023          | 6. August 2024        | 4. Februar 2025      |
-| [Laravel 11](https://laravel-news.com/laravel-11 "Laravel 11") | 8.2         | Q1 2024          | 5. August 2025        | 3. Februar 2026      |
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Version</th>
+        <th>PHP Version</th>
+        <th>Veröffentlichung</th>
+        <th>Fehlerbehebungen bis</th>
+        <th>Sicherheitsfixes bis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://laravel-news.com/laravel-9" target="_blank" title="Laravel 9">Laravel 9</a></td>
+        <td>8.0 - 8.2</td>
+        <td>8. Februar 2022</td>
+        <td>8. August 2023</td>
+        <td>6. Februar 2024</td>
+      </tr>
+      <tr>
+        <td><a href="https://laravel-news.com/laravel-10" target="_blank" title="Laravel 10">Laravel 10</a></td>
+        <td>8.1 - 8.2</td>
+        <td>Q1 2023</td>
+        <td>6. August 2024</td>
+        <td>4. Februar 2025</td>
+      </tr>
+      <tr>
+        <td><a href="https://laravel-news.com/laravel-11" target="_blank" title="Laravel 11">Laravel 11</a></td>
+        <td>8.2</td>
+        <td>Q1 2024</td>
+        <td>5. August 2025</td>
+        <td>3. Februar 2026</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ## Laravel 11 installieren
 
 Obwohl Laravel 11 noch nicht offiziell veröffentlicht ist, könnt ihr es bereits verwenden und testen, indem ihr
 ein neues Laravel Projekt mit dem Parameter **--dev** erstellt.
 
-**Hinweis: Ich rate davon ab, Laravel 11 nicht Produktiv einzusetzen, solange es nicht offiziell veröffentlicht ist,
+**Hinweis: Ich rate davon ab, Laravel 11 bereits Produktiv einzusetzen, solange es nicht offiziell veröffentlicht ist,
 da sich bis zur offiziellen Veröffentlichung noch Änderungen ergeben können.**
 
 ```sh
@@ -140,8 +171,9 @@ laravel new mein_laravel_elf_projekt --dev
 
 ## Fazit
 
-Abschließend bin ich gespannt darauf, wie die Laravel-Community auf die Veröffentlichung von Laravel 11 reagieren wird.
+Abschließend bin ich gespannt darauf, wie die Laravel-Community auf Laravel 11 insgesamt reagieren wird.
 Die bevorstehenden Änderungen sehe ich durchweg als positive Entwicklung in die richtige Richtung. Auch wenn es
 möglicherweise bedeutet, dass Anpassungen in unseren aktuellen Laravel-Projekten vorgenommen werden müssen, bin ich
 optimistisch, dass die neuen Funktionen und Optimierungen den Arbeitsablauf erheblich verbessern werden. Da sich Dinge
 möglicherweise ändern, werde ich diesen Beitrag aktualisieren, wenn weitere Features angekündigt werden. **Stay tuned!**
+    
