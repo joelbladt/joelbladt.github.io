@@ -35,7 +35,7 @@ jobs:
         if: ${{ false }}
 
       - name: Build
-        run: hugo --source testSuite --minify --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics
+        run: hugo --source testSuite --minify --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics --configDir config/_default
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
