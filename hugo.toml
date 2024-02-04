@@ -3,9 +3,12 @@ languageCode = "de-de"
 title = "Joel Bladt"
 theme = "hugo-bootstrap-theme"
 themesdir = "node_modules/@filipecarneiro"
-publishDir = "docs"
+publishDir = "public"
 disqusShortname = "joelbladt"
 staticDir = ['static']
+
+
+
 
 [taxonomies]
   tag = "tags"
@@ -15,7 +18,10 @@ staticDir = ['static']
   post = "/:filename/"
 
 [params]
-  description = "Some description"
+  name = "Joel Bladt"
+  license = "MIT"
+  licenselink = "https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"
+  description = "Blog und Lebenslauf: Meine persönliche digitale Visitenkarte.."
   contentBackgroundColor = "#fff"
   contentTextColor = "#212529"
   contentLinkColor = "#007bff"
@@ -29,8 +35,9 @@ staticDir = ['static']
   customBlockquoteStyle = true
   showPostSummary = false
   googleAnalytics = "UA-68235779-1"
+  googleTagManager = "GTM-N5WS5ZVS"
   cookieConsent = true
-  includeBootstrapJs = false
+  includeBootstrapJs = true
   faviconSafariPinnedTabColor = "#5bbad5"
   faviconMsApplicationTileColor = "#da532c"
   faviconThemeColor = "#ffffff"

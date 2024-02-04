@@ -1,0 +1,6 @@
+[de]
+  languageName = "Deutsch"
+  languageCode = "de-DE"
+  weight = 10
+  [en.params]
+    languageISO = "DE"

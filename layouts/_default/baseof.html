@@ -1,21 +1,30 @@
 <!doctype html>
-<html lang="de" data-bs-theme="light">
-
-{{ partial "head.html" . }}
-
-<body>
-  {{ partial "nav.html" . }}
-  
-  <main class="pt-4 pb-0">
-    <div class="container">
-    {{ block "main" . }}{{ end }}
-    </div>
-  </main>
-
-  {{ partial "bootstrap-js.html" . }}
-  {{ partial "google-analytics-async.html" . }}
-  {{ partial "mastodon-js.html" . }}
-  {{ partial "cookie-consent.html" . }}
+<html lang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}">
+{{ partial "head/head.html" . }}
+{{ if eq .Kind "home" -}}
+{{ .Scratch.Set "class" "home" -}}
+{{ else if eq .Kind "404" -}}
+{{ .Scratch.Set "class" "error404" -}}
+{{ else if eq .Kind "page" -}}
+{{ .Scratch.Set "class" .Type -}}
+{{ .Scratch.Add "class" " single" -}}
+{{ else -}}
+{{ .Scratch.Set "class" .Type -}}
+{{ .Scratch.Add "class" " list" -}}
+{{ end -}}
+<body class="{{ .Scratch.Get `class` }} d-flex flex-column min-vh-100">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5WS5ZVS"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+{{- partial "header/header.html" . -}}
+<div id="content">
+  {{ if and (.Site.Params.options.breadCrumb) (ne .Kind "home") -}}
+  {{- partial "header/breadcrumb.html" . -}}
+  {{ end }}
+  {{- block "main" . }}{{- end }}
+</div>
+{{ partial "footer/footer.html" . }}
+{{ partial "footer/script-footer.html" . }}
 </body>
-
 </html>

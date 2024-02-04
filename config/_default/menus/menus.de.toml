@@ -1,0 +1,20 @@
+[[main]]
+name = "Über mich"
+url = "about"
+weight = 10
+title = "Made with ❤️ by the Hugo Bootstrap Theme team"
+
+[[main]]
+name = "Blog"
+url = "blog"
+weight = 20
+
+[[main]]
+name = "Github"
+url = "https://github.com/joelbladt"
+weight = 40
+
+[[main]]
+name = "Twitter"
+url = "https://twitter.com/joelbladt"
+weight = 60
