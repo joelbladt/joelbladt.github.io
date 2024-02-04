@@ -23,153 +23,202 @@ h1, h2, h3, h4, h5, h6,
     }
 }
 
-.card, .overflow-hidden {
-    will-change: transform;
+$color_1: var(--bs-white);
+$color_2: inherit;
+
+@-webkit-keyframes imgflash {
+    100% {
+        left: 125%;
+    }
+}
+
+@keyframes imgflash {
+    100% {
+        left: 125%;
+    }
 }
 
 .card {
+    will-change: transform;
     .card-element-hover {
         visibility: hidden;
         margin-top: 30px;
         opacity: 0;
+        -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
         z-index: 9;
-
-        &:hover {
+    }
+    &:hover {
+        .card-element-hover {
             visibility: visible;
             margin-top: 0px;
             opacity: 1;
         }
-    }
-
-    &.card-overlay-bottom {
-        overflow: hidden;
-
-        &:before {
-            content: "";
-            position: absolute;
-            height: 50%;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-image: linear-gradient(180deg, transparent, black);
-            z-index: 1;
-        }
-
-        .card-img-overlay {
-            z-index: 2;
-        }
-    }
-
-    &.card-overlay-top {
-        overflow: hidden;
-
-        &:before {
-            content: "";
-            position: absolute;
-            height: 50%;
-            width: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-image: linear-gradient(0deg, transparent, black);
-        }
-    }
-
-    &.card-img-scale {
-        .card-img {
-            transition: all 0.3s ease-in-out;
-            transform: scale(1);
-
-            &:hover {
-                transform: scale(1.08);
+        .card-fold {
+            &:after {
+                width: 40px;
+                height: 40px;
             }
         }
     }
-
-    &.card-bg-scale {
-        z-index: 99;
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: inherit;
-            transition: all 1s !important;
-            z-index: -2;
-
-            &:hover {
-                transform: scale(1.1);
-                transition: all 1s !important;
+    .card-img-overlay {
+        z-index: 2;
+    }
+    &:focus {
+        .card-fold {
+            &:after {
+                width: 40px;
+                height: 40px;
             }
         }
     }
-
-    &.card-featured {
+    &:active {
+        .card-fold {
+            &:after {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+    &:hover.card-fold {
+        &:after {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    &:focus.card-fold {
+        &:after {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    &:active.card-fold {
+        &:after {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+.overflow-hidden {
+    will-change: transform;
+}
+.card.card-overlay-bottom {
+    overflow: hidden;
+    &:before {
+        content: "";
         position: absolute;
-        z-index: 99;
-        background: var(--bs-primary);
-        color: var(--bs-white);
-        transform: rotate(45deg);
-        text-align: center;
-        top: -8px;
-        right: -48px;
-        width: 120px;
-        padding: 16px 0 3px 0;
+        height: 50%;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
+        background-image: linear-gradient(180deg, transparent, black);
+        z-index: 1;
     }
-
-    &.card-img-flash {
-        position: relative;
-        overflow: hidden;
-
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            z-index: 2;
-            left: -80%;
-            width: 50%;
-            height: 100%;
-            display: block;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
-            transform: skewX(-25deg);
+}
+.card.card-overlay-top {
+    overflow: hidden;
+    &:before {
+        content: "";
+        position: absolute;
+        height: 50%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-image: -webkit-gradient(linear, left bottom, left top, from(transparent), to(black));
+        background-image: linear-gradient(0deg, transparent, black);
+    }
+}
+.card-img-scale {
+    .card-img {
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    &:hover {
+        .card-img {
+            -webkit-transform: scale(1.08);
+            transform: scale(1.08);
         }
-
-        &:hover::before {
+    }
+}
+.card-bg-scale {
+    z-index: 99;
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: inherit;
+        -webkit-transition: all 1s !important;
+        transition: all 1s !important;
+        z-index: -2;
+    }
+    &:hover {
+        &::after {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            -webkit-transition: all 1s !important;
+            transition: all 1s !important;
+        }
+    }
+}
+.card-featured {
+    position: absolute;
+    z-index: 99;
+    background: var(--bs-primary);
+    color: $color_1;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    text-align: center;
+    top: -8px;
+    right: -48px;
+    width: 120px;
+    padding: 16px 0 3px 0;
+}
+.card-img-flash {
+    position: relative;
+    overflow: hidden;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        left: -80%;
+        width: 50%;
+        height: 100%;
+        display: block;
+        background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.3)));
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+        -webkit-transform: skewX(-25deg);
+        transform: skewX(-25deg);
+    }
+    &:hover {
+        &::before {
+            -webkit-animation: imgflash 1s;
             animation: imgflash 1s;
         }
     }
-
-    @keyframes imgflash {
-        100% {
-            left: 125%;
-        }
-    }
 }
-
 .card-grid {
-    &.card-grid-lg {
+    .card-grid-lg {
         height: 560px;
-
-        @media (max-width: 767.98px) {
-            height: 400px;
-        }
     }
-
-    &.card-grid-sm {
+    .card-grid-sm {
         height: calc(280px - var(--bs-gutter-y) / 2);
     }
 }
-
 .card-fold {
     position: relative;
+    -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-
     &:after {
         position: absolute;
         content: "";
@@ -179,21 +228,16 @@ h1, h2, h3, h4, h5, h6,
         right: 0;
         z-index: 1000;
         background: linear-gradient(-45deg, var(--bs-body-bg) 45%, var(--bs-body-bg) 45%, #d0d4d9 50%, #fff 70%);
+        -webkit-box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.4);
         box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.4);
+        -webkit-transition: 0.3s;
         transition: 0.3s;
         border-radius: 0.7rem 0px 0px 0px;
-
-        &:hover,
-        &:focus,
-        &:active,
-        &.card-fold:hover,
-        &.card-fold:focus,
-        &.card-fold:active {
-            width: 40px;
-            height: 40px;
-        }
-
-        &.bg-dark {
+    }
+}
+.bg-dark {
+    .card-fold {
+        &:after {
             --bs-bg-opacity: 1;
             background: linear-gradient(-45deg, rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) 45%, #000 45%, #d0d4d9 50%, #fff 70%);
         }
@@ -206,57 +250,67 @@ h1, h2, h3, h4, h5, h6,
     }
 }
 
-.nav-divider {
-    a:not(.dropdown-item) {
-        color: inherit;
+.nav.nav-divider {
+    a {
+        &:not(.dropdown-item) {
+            color: $color_2;
+        }
     }
-
     .nav-item {
+        + {
+            .nav-item {
+                &:before {
+                    content: "•";
+                    color: $color_2;
+                    padding-left: 0.65rem;
+                    padding-right: 0.75rem;
+                    opacity: 0.8;
+                }
+            }
+        }
         display: inline-block;
         vertical-align: middle;
-
-        .nav-link {
-            padding: 0;
-            color: inherit;
-        }
-
-        + .nav-item:before {
-            content: "•";
-            color: inherit;
-            padding-left: 0.65rem;
-            padding-right: 0.75rem;
-            opacity: 0.8;
-        }
+    }
+    .nav-link {
+        padding: 0;
+        color: $color_2;
     }
 }
-
-.stretched-link::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    content: "";
+.stretched-link {
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        content: "";
+    }
 }
-
 .text-reset {
     --bs-text-opacity: 1;
-    color: inherit !important;
+    color: $color_2 !important;
 }
-
 .btn-link {
     padding-bottom: 0px;
+    background: -webkit-gradient(linear, left top, right top, from(currentColor), to(currentColor));
     background: linear-gradient(to right, currentColor 0%, currentColor 100%);
     background-size: 0px 6%;
     background-repeat: no-repeat;
     background-position: left 100%;
+    -webkit-transition-duration: 0.5s;
     transition-duration: 0.5s;
     font-weight: inherit;
     padding: 0;
-
     &:hover {
         background-size: 100% 6%;
+    }
+}
+@media (max-width: 767.98px) {
+    .card-grid {
+        .card-grid-lg {
+            height: 400px;
+        }
     }
 }
 
