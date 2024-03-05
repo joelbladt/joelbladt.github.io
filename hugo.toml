@@ -7,9 +7,6 @@ publishDir = "docs"
 disqusShortname = "joelbladt"
 staticDir = ['static']
 
-
-
-
 [taxonomies]
   tag = "tags"
   category = "categories"
