@@ -1,10 +1,10 @@
 ---
 title: "Ein Blick in die Zukunft: Neue Features in Laravel 11"
 titleImage: "laravel.jpg"
+images: ["laravel.jpg"]
 date: 2024-01-30T01:14:13+02:00
 draft: false
 toc: false
-images:
 tags:
   - Laravel
 author: "Joel Bladt"
