@@ -1,0 +1,43 @@
+{{ define "main" }}
+
+{{/* Required Template File */}}
+
+{{ $link := .Permalink }}
+{{ $cover := .Params.titleImage }}
+{{ $backgroundImage := print $link $cover }}
+
+<div class="container-fluid p-0">
+  {{ if .Params.titleImage }}
+    <img class="img-fluid vw-100 article-main-image object-fit-cover" src="{{ if in .Params.titleImage "http" }}{{ $cover }}{{ else }}{{ $backgroundImage }}{{ end }}" />
+  {{ end }}
+
+
+  <div class="container my-10 mx-auto article">
+    <main class="px-4">
+    {{ if .Title }}
+      <h1>{{ .Title | markdownify }}</h1>
+    {{ end }}
+
+    {{/* Veröffentlichung, Lesezeit & Co. */}}
+    {{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
+    {{ $minutes := math.Round (div $readTime 60) }}
+
+    {{ if .PublishDate }}
+    <p>
+      <small class="text-secondary">
+        {{ $customDateFormat := "2. Junuar 2006" }}
+        {{ with .Site.Params.customDateFormat }}{{ $customDateFormat = . }}{{ end }}
+        {{ .PublishDate.Format $customDateFormat }}
+        {{ if gt .Lastmod .PublishDate }}, zuletzt geändert am: {{ .Lastmod.Format $customDateFormat }}{{ end }}
+        &#124; Lesedauer: {{ $minutes }} {{ cond (lt $minutes 2) "Minute" "Minuten" }}
+      </small>
+    </p>
+    {{ end }}
+
+    {{ .Content }}
+    </main>
+  </div>
+
+</div>
+
+{{ end }}
