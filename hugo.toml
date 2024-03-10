@@ -31,10 +31,11 @@ staticDir = ['static']
   customCodeStyle = true
   customBlockquoteStyle = true
   showPostSummary = false
-  googleAnalytics = "UA-68235779-1"
-  googleTagManager = "GTM-N5WS5ZVS"
-  cookieConsent = true
   includeBootstrapJs = true
   faviconSafariPinnedTabColor = "#5bbad5"
   faviconMsApplicationTileColor = "#da532c"
   faviconThemeColor = "#ffffff"
+
+  [params.googleTag]
+    measurementId = "GTM-N5WS5ZVS"
+    cookies = true
