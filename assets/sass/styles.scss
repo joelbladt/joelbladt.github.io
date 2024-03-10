@@ -366,7 +366,9 @@ blockquote,
         max-height:400px;
     }
 
-    .blog-content {
+
+    .blog .blog-content {
+        display: block;
         position: relative;
 
         &::before {
