@@ -1,2 +1,5 @@
 .DS_Store
-/node_modules/
+docs
+node_modules
+resources
+.hugo_build.lock
